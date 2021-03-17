@@ -1,0 +1,104 @@
+<%- include('../partials/header',{title:'Satıcılar'}); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4 class="center-align">
+        İşçilər - <%=data.length %> nəfər
+        <a
+          href="/workers/add"
+          class="btn waves-effect green accent-4 btn-floating"
+          ><i class="material-icons">person_add</i></a
+        >
+      </h4>
+      <div class="input-field col s6">
+        <i class="material-icons prefix" id="searchBtn">search</i>
+        <input id="searchWorker" type="text" class="validate" />
+        <label for="searchWorker">Axtarış</label>
+      </div>
+      <div class="input-field col s6">
+        <select id="searchSelect">
+          <option value="name">Ada görə</option>
+          <option value="surname">Soyada görə</option>
+          <option value="address">Addressə görə</option>
+          <option value="phone">Nömrəyə görə</option>
+          <option value="position">Vəzifəyə görə</option>
+          <option value="salary">Maaşa görə</option>
+          <option value="branch">Filiala görə</option>
+        </select>
+      </div>
+    </div>
+    <div class="col s12">
+      <table class="striped highlight centered responsive-table">
+        <thead>
+          <tr>
+            <th scope="col">
+              Id
+              <a href="?si=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Soyad
+              <a href="?ss=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Ad
+              <a href="?sn=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Qeydiyyat
+              <a href="?st=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Address
+              <a href="?sa=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">Əlaqə</th>
+            <th scope="col">
+              Vəzifə
+              <a href="?sp=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Maaş
+              <a href="?ssa=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">
+              Filial
+              <a href="?sb=<%=sort%>"><i class="text-blue fa fa-sort"></i></a>
+            </th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(item =>{%>
+          <tr>
+            <th scope="row"><%=item.worker_id%></th>
+            <td><%=item.worker_surname%></td>
+            <td><%=item.worker_name%></td>
+            <td>
+              <%=item.worker_time.getDate().toString()%> -
+              <%=(item.worker_time.getMonth()+1).toString()%> -
+              <%=item.worker_time.getFullYear().toString()%><br />
+              <%=item.worker_time.getHours().toString()%> :
+              <%=item.worker_time.getMinutes().toString()%>
+            </td>
+            <td><%=item.worker_address%></td>
+            <td><%=item.worker_phone%></td>
+            <td><%=item.worker_position%></td>
+            <td><%=item.worker_salary%> manat</td>
+            <td><%=item.worker_branch%> filialı</td>
+            <td>
+              <a
+                class="btn waves-effect btn-floating"
+                href="/workers/edit?workerId=<%=item.worker_id%>"
+                ><i class="fa fa-cog"></i
+              ></a>
+            </td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    
+  </div>
+</div>
+
+<%- include('../partials/footer',{js:'/js/worker.js'}); %>

@@ -1,0 +1,41 @@
+<%- include('../partials/header',{title:'Filiallar'}); %>
+
+<div class="container">
+    <div class="row ">
+        <div class="col s12">
+            <h4 class="center-align">
+                Filiallar - <%=data.length %> filial
+                <a href="/branches/add" class="btn waves-effect green accent-4 btn-floating"><i class="material-icons">add_chart</i></a>
+            </h4>
+            <table class="striped centered highlight responsive-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Id <a href="?si=<%=sort%>" class="link"><i  class="text-blue fa fa-sort"></i></a></th>
+                    <th scope="col">Ad <a href="?sn=<%=sort%>" class="link "><i  class="text-blue fa fa-sort"></i></a></th>
+                    <th scope="col">Address <a href="?sa=<%=sort%>" class="link"><i  class="text-blue fa fa-sort"></i></a></th>
+                    <th scope="col">Məlumat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% data.forEach(item =>{%>
+                  <tr>
+                    <th scope="row"><%=item.branch_id%></th>
+                    <td><%=item.branch_name%></td>
+                    <td><%=item.branch_address%></td>
+
+                    <td>
+                      <a class="btn waves-effect btn-floating" href="/branches/info?branchName=<%=item.branch_name%>"
+                        ><i class="fa fa-info-circle"></i></a
+                      >
+                    </td>
+                  </tr>
+                  <% })%>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('../partials/footer',{js:'/js/branch.js'}); %>

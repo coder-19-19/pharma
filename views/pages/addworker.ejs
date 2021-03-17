@@ -1,0 +1,70 @@
+<%- include('../partials/header',{title:'Yeni Satıcı'}); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <form
+        id="addForm"
+        method="POST"
+        action="/workers/add"
+        class="input-field"
+        enctype="multipart/form-data"
+      >
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">badge</i>
+          <input id="editName" name="name" type="text" class="validate" />
+          <label for="editName">Ad</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">badge</i>
+          <input id="editSurname" name="surname" type="text" class="validate" />
+          <label for="editSurname">Soyad</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">dns</i>
+          <input id="editAddress" name="address" type="text" class="validate" />
+          <label for="editAddress">Address</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <input id="editPhone" name="phone" type="number" class="validate" />
+          <label for="editPhone">Əlaqə</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">apartment</i>
+          <select name="branch">
+            <% dataBranches.forEach(branch =>{ %>
+            <option value="<%=branch.branch_name%>"><%=branch.branch_name%>
+            </option>
+            <% })%>
+          </select>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">apartment</i>
+          <select name="position">
+            <% dataPositions.forEach(position =>{ %>
+            <option value="<%=position.position_name%>"><%=position.position_name%>
+            </option>
+            <% })%>
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">paid</i>
+          <input id="editSalary" name="salary" type="number" class="validate" />
+          <label for="editSalary">Maaş</label>
+        </div>
+        <button
+          id="editBtn"
+          class="btn green btn-large waves-effect accent-4"
+          style="width: 100%"
+        >
+          <i class="fa fa-plus"></i>Əlavə et
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer',{js:'/js/worker.js'}); %>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Şifrəmi unutdum</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="section"></div>
+    <main>
+      <center>
+        <h2 class="indigo-text">Şifrəmi unutdum</h2>
+        <div class="section"></div>
+
+        <div class="container">
+          <div
+            class="z-depth-1 grey lighten-4 row"
+            style="
+              display: inline-block;
+              padding: 32px 60px 0px 60px;
+              border: 1px solid #eee;
+            "
+            >
+              <div class="row">
+                <div class="col s12"></div>
+              </div>
+              <form action="/forget" method="POST">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input
+                    class="validate"
+                    type="email"
+                    name="email"
+                    id="email"
+                  />
+                  <label for="email">Email</label>
+                </div>
+              </div>
+
+              <br />
+              <center>
+                <div class="row">
+                  <button
+                    type="submit"
+                    class="col s12 btn btn-large waves-effect indigo"
+                    id="loginBtn"
+                  >
+                    Göndər
+                  </button>
+                </div>
+              </center>
+            </form>
+          </div>
+        </div>
+      </center>
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      const form = $('form')
+      
+      form.on('submit', e => {
+        if(!$('input').val()){
+          alert('Email daxil edin!')
+          e.preventDefault()
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+    </style>
+</head>
+<body>
+    
+   
+    
+	<div class="container">
+    <div class="row">
+      <div class="col s12">
+        <button class="btn btn-large">Salam</button>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<script>
+	  
+    const button = document.querySelector('button')
+
+    button.addEventListener('click', () => {
+      alert('')
+    })
+    let x = 20
+    let y = 20
+    let velocityX = 10
+    document.addEventListener('keydown', (e) => {
+      if(e.keyCode == 37){
+        x -= 20
+      button.style.marginLeft = x + 'px'
+      }
+      else if(e.keyCode == 39){
+        x += 20
+        button.style.marginLeft = x + 'px'
+      }
+      else if(e.keyCode == 38){
+        y -= 20
+        button.style.marginTop = y + 'px'
+      }
+      else if(e.keyCode == 40){
+        y += 20
+        button.style.marginTop = y + 'px'
+      }
+
+    })
+
+  
+	</script>
+</body>
+</html>

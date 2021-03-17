@@ -1,0 +1,30 @@
+<%- include('../partials/header',{title:'Yeni filial'}); %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col s12 m6 offset-m3">
+
+            <form id="addBranch" action="/branches/add" method="POST" class="form-group bg-dark p-4 rounded">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">apartment</i>
+                    <input id="addName" type="text" name="name" class="validate">
+                    <label for="addName">Filial adı</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">apartment</i>
+                    <input id="addAddress" type="text" name="address" class="validate">
+                    <label for="addAddress">Filial addressi</label>
+                </div>
+                <button type="submit" class="btn waves-effect green accent-4 btn-large" style="width: 100%;">
+                    <i class="fa fa-plus"></i> 
+                    Əlavə Et
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('../partials/footer',{js:'/js/branch.js'}); %>

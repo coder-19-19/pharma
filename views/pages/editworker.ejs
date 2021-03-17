@@ -1,0 +1,60 @@
+<%- include('../partials/header',{title:'Satıcı Ayarları'}); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6  bg-dark p-5 offset-m3">
+      <% data.forEach(item => {%>
+      <form  id="editForm" method="POST" action="/workers/edit" class="input-field">
+        <input id="editId" name="id" type="hidden" value="<%=item.worker_id%>">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">badge</i>
+          <input id="editName" name="name" type="text" class="validate" value="<%=item.worker_name%>">
+          <label for="editName">Ad</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">badge</i>
+          <input id="editSurname" name="surname" type="text" class="validate" value="<%=item.worker_surname%>">
+          <label for="editSurname">Soyad</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">dns</i>
+          <input id="editAddress" name="address" type="text" class="validate" value="<%=item.worker_address%>">
+          <label for="editAddress">Address</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <input  id="editPhone" name="phone" type="number" class="validate" value="<%=item.worker_phone%>">
+          <label for="editPhone">Əlaqə</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">apartment</i>
+          <select name="branch">
+              <option selected value="<%=item.worker_branch%>"><%=item.worker_branch%></option>
+              <% dataBranches.forEach(branch =>{ if(branch.branch_name != item.worker_branch){%>
+                <option value="<%=branch.branch_name%>"><%=branch.branch_name%></option>
+              <% }})%> 
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">apartment</i>
+          <select name="position">
+              <option selected value="<%=item.worker_position%>"><%=item.worker_position%></option>
+              <% dataPositions.forEach(position =>{ if(position.position_name != item.worker_position){%>
+                <option value="<%=position.position_name%>"><%=position.position_name%></option>
+              <% }})%> 
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">paid</i>
+          <input id="editSalary" name="salary" type="text" class="validate" value="<%=item.worker_salary%>">
+          <label for="editSalary">Maaş</label>
+        </div>
+        <button id="editBtn" class="btn blue btn-large waves-effect accent-4 " style="width: 100%;"><i class="fa fa-save"></i> Saxla</button>
+        <a id="deleteBtn"  class="btn red waves-effect btn-large  accent-4 " style="width: 100%;margin-top:8px;"><i class="fa fa-trash"></i> Sil</a>
+      </form>
+      <% })%>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer',{js:'/js/worker.js'}); %>

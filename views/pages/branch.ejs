@@ -1,0 +1,99 @@
+<%- include('../partials/header',{title:branchName + ' filialı'}); %>
+
+<h4 class="center-align"><%=branchName%> filialı</h4>
+<% dataWorkers.forEach(item => { 
+    if(item.worker_position == 'Filial Müdiri'){ %>
+    <h6 class="center-align">
+       Filial müdiri - <a href="/workers/edit?workerId=<%=item.worker_id%>"><%=item.worker_name + ' ' + item.worker_surname %></a>
+    </h6>
+    <%}})%>
+
+<ul id="tabs-swipe-demo" class="tabs">
+  <li class="tab col s4"><a href="#workers" class="active">İşçİlər - <%=dataWorkers.length%></a></li>
+  <li class="tab col s4"><a href="#drugs">Dərmanlar</a></li>
+  <li class="tab col s4"><a href="#edit">Edit</a></li>
+</ul>
+<div id="workers" class="col s12">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <table class="striped highlight centered responsive-table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Soyad</th>
+              <th scope="col">Ad</th>
+              <th scope="col">Qeydiyyat</th>
+              <th scope="col">Address</th>
+              <th scope="col">Əlaqə</th>
+              <th scope="col">Vəzifə</th>
+              <th scope="col">Maaş</th>
+              <th scope="col">Filial</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% dataWorkers.forEach(item =>{%>
+            <tr>
+              <th scope="row"><%=item.worker_id%></th>
+              <td><%=item.worker_surname%></td>
+              <td><%=item.worker_name%></td>
+              <td>
+                <%=item.worker_time.getDate().toString()%> -
+                <%=(item.worker_time.getMonth()+1).toString()%> -
+                <%=item.worker_time.getFullYear().toString()%><br />
+                <%=item.worker_time.getHours().toString()%> :
+                <%=item.worker_time.getMinutes().toString()%>
+              </td>
+              <td><%=item.worker_address%></td>
+              <td><%=item.worker_phone%></td>
+              <td><%=item.worker_position%></td>
+              <td><%=item.worker_salary%> manat</td>
+              <td><%=item.worker_branch%> filialı</td>
+              <td>
+                <a
+                  class="btn waves-effect btn-floating"
+                  href="/workers/edit?workerId=<%=item.worker_id%>"
+                  ><i class="fa fa-cog"></i
+                ></a>
+              </td>
+            </tr>
+            <% })%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="drugs" class="col s12">Test 2</div>
+<div id="edit" class="col s12">
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <form id="editBranch" action="/branches/edit" method="POST" class="form-group bg-dark p-4 rounded">
+                    <% dataBranches.forEach(item => {%>
+                    <input type="hidden" name="id" id="editId" value="<%=item.branch_id%>">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">apartment</i>
+                        <input id="addName" type="text" name="name" class="validate" value="<%=item.branch_name%>">
+                        <label for="addName">Filial adı</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">apartment</i>
+                        <input id="addAddress" type="text" name="address" class="validate" value="<%=item.branch_address%>">
+                        <label for="addAddress">Filial addressi</label>
+                    </div>
+                    <button type="submit" class="btn waves-effect blue accent-4 btn-large" style="width: 100%;">
+                        <i class="fa fa-save"></i> 
+                        Saxla
+                    </button>
+                    <a id="delBranch" class="btn red accent-4 waves-effect btn-large" style="width: 100%;margin-top: 8px;"><i class="fa fa-trash"></i>Sil</a>
+                    <% })%>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer',{js:'/js/branch.js'}); %>
